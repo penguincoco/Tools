@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1bda1ce1a9ea34395a2f533ea5a4da, type: 3}
   m_Name: YellowBarrel
   m_EditorClassIdentifier: 
-  radius: 5.72
+  radius: 2.73
   damage: 20
-  color: {r: 1, g: 0.8262048, b: 0.3726415, a: 1}
+  color: {r: 1, g: 0.7995283, b: 0.2688679, a: 1}

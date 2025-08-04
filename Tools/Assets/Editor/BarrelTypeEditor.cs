@@ -3,20 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(BarrelType))]
 public class BarrelTypeEditor : Editor
 {
+    SerializedObject so;
+    SerializedProperty propRadius;
+    SerializedProperty propDamage;
+    SerializedProperty propColor;
+
+    //OnEnable is like Awake for inspector
+    private void OnEnable()
+    {
+        so = serializedObject;
+        propRadius = so.FindProperty("radius");
+        propDamage = so.FindProperty("damage");
+        propColor = so.FindProperty("color");
+    }
+
     public override void OnInspectorGUI()
     {
+        so.Update();
 
-        //this has ignored everything about serialization! We're modifying the raw values immediately. 
-        //if you edit something, you need to make sure the data is marked as dirty (it's changed) 
+        EditorGUILayout.PropertyField(propRadius);
+        EditorGUILayout.PropertyField(propDamage);
+        EditorGUILayout.PropertyField(propColor);
 
-        //undo doesn't work
-        BarrelType barrel = target as BarrelType;
-        barrel.radius = EditorGUILayout.FloatField("Radius ", barrel.radius);
-        barrel.damage = EditorGUILayout.FloatField("Damage ", barrel.damage);
-        barrel.color = EditorGUILayout.ColorField("Color ", barrel.color);
+        if (so.ApplyModifiedProperties())
+        {
+            ExplosiveBarrelManager.UpdateAllBarrelColors();
+        }
+
+        so.ApplyModifiedProperties();
     }
 }
 

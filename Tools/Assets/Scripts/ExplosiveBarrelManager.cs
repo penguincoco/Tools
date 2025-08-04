@@ -11,6 +11,14 @@ public class ExplosiveBarrelManager : MonoBehaviour
 {
     public static List<ExplosiveBarrel> allBarrels = new List<ExplosiveBarrel>();
 
+    public static void UpdateAllBarrelColors()
+    {
+        foreach (ExplosiveBarrel barrel in allBarrels)
+        {
+            barrel.TryApplyColor();
+        }
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

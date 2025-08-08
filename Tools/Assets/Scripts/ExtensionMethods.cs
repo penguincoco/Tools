@@ -26,4 +26,7 @@ public static class ExtensionMethods
         //rescale it, put it in a different space then snap it in that space, then scale it up again
         return Mathf.Round(v / size) * size;
     }
+
+    public static float AtLeast(this float v, float min) => Mathf.Max(v, min);
+    public static int AtLeast(this int v, int min) => Mathf.Max(v, min);
 }

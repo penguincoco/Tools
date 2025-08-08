@@ -25,15 +25,4 @@ public static class Snapper
             go.transform.position = go.transform.position.Round();
         }
     }
-
-    //Use an Extention Method
-    //Static function in a static class
-    public static Vector3 Round(this Vector3 v, float snapValue = 1f) 
-    {
-        v.x = Mathf.Round(v.x / snapValue) * snapValue;
-        v.y = Mathf.Round(v.y / snapValue) * snapValue;
-        v.z = Mathf.Round(v.z / snapValue) * snapValue;
-
-        return v;
-    }
 }

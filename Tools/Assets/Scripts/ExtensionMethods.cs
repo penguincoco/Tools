@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class ExtensionMethods
+{
+    //Use an Extention Method
+    //Static function in a static class
+    public static Vector3 Round(this Vector3 v)
+    {
+        v.x = Mathf.Round(v.x);
+        v.y = Mathf.Round(v.y);
+        v.z = Mathf.Round(v.z);
+
+        return v;
+    }
+
+    public static Vector3 Round(this Vector3 v, float size)
+    {
+        //rescale it, put it in a different space then snap it in that space, then scale it up again
+        return (v / size).Round() * size;
+    }
+
+    public static float Round(this float v, float size)
+    {
+        //rescale it, put it in a different space then snap it in that space, then scale it up again
+        return Mathf.Round(v / size) * size;
+    }
+}
